@@ -1,0 +1,53 @@
+
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Categorias</li>
+    </ol>
+  </nav>
+  
+  
+  <div class="container">
+    
+    <div class="card list-categoria">
+      <h5 class="card-header">Lista de Categorias</h5>
+      <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>             
+                <th scope="col">Descrição</th>  
+                <th scope="col">Ações</th>           
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let categoria of Categorias">
+                <td>{{categoria.id}}</td>            
+                <td>{{categoria.descricao}}</td>            
+                <td>
+                  <button type="button" class="btn btn-warning btn-sm" (click)="editCategoria(categoria)">Editar</button>
+                  <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteCategoria(categoria)">Deletar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  
+    <div class="card add-categoria">
+        <h5 class="card-header">Adicionar/Atualizar categoria</h5>
+        <div class="card-body">
+            <form id="add-form" (ngSubmit)="f.form.valid && saveCategoria(f)" #f="ngForm" novalidate>          
+              <div class="form-group">
+                  <label for="descricao">Descrição</label>
+                  <input type="text" [(ngModel)]="Categoria.descricao" id="descricao" name="descricao" #descricao="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && descricao.invalid }" placeholder="Digite a Descrição">
+                  <div *ngIf="f.submitted && descricao.invalid" class="invalid-feedback">
+                      <div *ngIf="descricao.errors.required">Descrição é obrigatório</div>
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-add-categoria">Salvar</button>
+              <button type="reset" class="btn btn-secondary btn-add-categoria" (click)="cleanForm(f)">Cancelar</button>
+            </form>
+        </div>
+      </div>
+    </div>

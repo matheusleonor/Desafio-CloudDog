@@ -1,0 +1,26 @@
+{
+  "produtos": [
+    {
+      "titulo": "Tomate",
+      "preco": 12.99,
+      "descricao": "tomate bem vermelho",
+      "id": 1
+    },
+    {
+      "titulo": "melancia",
+      "preco": 21.99,
+      "descricao": "bem grande",
+      "id": 2
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "descricao": "Informática"
+    },
+    {
+      "descricao": "Verduras",
+      "id": 2
+    }
+  ]
+}

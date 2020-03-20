@@ -1,0 +1,75 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Gerenciamento de Produtos</li>
+    </ol>
+  </nav>
+  
+  
+  <div class="container">
+  
+    <div class="card list-produto">
+      <h5 class="card-header">Lista de Produtos</h5>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Titulo</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let produto of produtos">
+              <td>{{produto.id}}</td>
+              <td>{{produto.titulo}}</td>
+              <td>{{produto.descricao}}</td>
+              <td>{{produto.preco | currency}}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="editProduto(produto)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteProduto(produto)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+    <div class="card add-produto">
+      <h5 class="card-header">Adicionar/Atualizar produto</h5>
+      <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && saveProduto(f)" #f="ngForm" novalidate>
+          <div class="form-group">
+            <label for="titulo">Titulo</label>
+            <input type="text" [(ngModel)]="produto.titulo" id="titulo" name="titulo" #titulo="ngModel" required
+              class="form-control" [ngClass]="{ 'is-invalid': f.submitted && titulo.invalid }"
+              placeholder="Digite o titulo">
+            <div *ngIf="f.submitted && titulo.invalid" class="invalid-feedback">
+              <div *ngIf="titulo.errors.required">Titulo é obrigatório</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="preco">Preço</label>
+            <input type="number" [(ngModel)]="produto.preco" id="preco" name="preco" #preco="ngModel" required
+              class="form-control" [ngClass]="{ 'is-invalid': f.submitted && preco.invalid }"
+              placeholder="Digite o preço">
+            <div *ngIf="f.submitted && preco.invalid" class="invalid-feedback">
+              <div *ngIf="preco.errors.required">Preço é obrigatória</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <input type="text" [(ngModel)]="produto.descricao" id="descricao" name="descricao" #descricao="ngModel"
+              required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && descricao.invalid }"
+              placeholder="Digite a Descrição">
+            <div *ngIf="f.submitted && descricao.invalid" class="invalid-feedback">
+              <div *ngIf="descricao.errors.required">Descrição é obrigatório</div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-add-produto">Salvar</button>
+          <button type="reset" class="btn btn-secondary btn-add-produto" (click)="cleanForm(f)">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
