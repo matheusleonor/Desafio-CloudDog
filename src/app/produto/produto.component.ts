@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from '../models/produto';
 import { NgForm } from '@angular/forms';
+import { Categoria } from '../models/categoria';
+import { CategoriaService } from '../services/categoria.service';
 
 @Component({
   selector: 'app-produto',
@@ -13,10 +15,15 @@ export class ProdutoComponent implements OnInit {
   produto = {} as Produto;
   produtos: Produto[];
 
-  constructor(private produtoService: ProdutoService) {}
+  Categoria = {} as Categoria;
+  Categorias: Categoria[];
+
+  constructor(private produtoService: ProdutoService, private categoriaService: CategoriaService) {}
+  
   
   ngOnInit() {
     this.getProdutos();
+    this.getCategorias();
   }
 
   // defini se um produto será criado ou atualizado
@@ -56,6 +63,12 @@ export class ProdutoComponent implements OnInit {
     this.getProdutos();
     form.resetForm();
     this.produto = {} as Produto;
+  }
+
+  getCategorias() {
+    this.categoriaService.getCategorias().subscribe((Categorias: Categoria[]) => {
+      this.Categorias = Categorias;
+    });
   }
 
 }

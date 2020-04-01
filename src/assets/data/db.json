@@ -4,13 +4,42 @@
       "titulo": "Tomate",
       "preco": 12.99,
       "descricao": "tomate bem vermelho",
-      "id": 1
+      "id": 1,
+      "categoria": "Verduras"
     },
     {
       "titulo": "melancia",
       "preco": 21.99,
       "descricao": "bem grande",
-      "id": 2
+      "id": 2,
+      "categoria": "Verduras"
+    },
+    {
+      "titulo": "Teste",
+      "preco": 12.12,
+      "descricao": "Informática",
+      "id": 3
+    },
+    {
+      "titulo": "Angular 8",
+      "preco": 149.99,
+      "descricao": "Angular 8 Json-Server",
+      "categoria": "Angular",
+      "id": 5
+    },
+    {
+      "titulo": "Torrada",
+      "preco": 4.99,
+      "descricao": "Torrada Quente",
+      "categoria": "Pão",
+      "id": 6
+    },
+    {
+      "categoria": "Informática",
+      "titulo": "aaaa2",
+      "preco": 12,
+      "descricao": "12",
+      "id": 7
     }
   ],
   "categorias": [
@@ -21,6 +50,18 @@
     {
       "descricao": "Verduras",
       "id": 2
+    },
+    {
+      "descricao": "teste",
+      "id": 3
+    },
+    {
+      "descricao": "Angular",
+      "id": 4
+    },
+    {
+      "descricao": "Pão",
+      "id": 5
     }
   ]
 }
